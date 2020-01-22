@@ -1207,6 +1207,20 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@pusher/chatkit-client-react@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@pusher/chatkit-client-react/-/chatkit-client-react-0.1.3.tgz#a3bce063bb049e0fb5fa2d6281cf92521a956de1"
+  integrity sha512-ABUNbS3YQ39sv1BnR9lC37oym8ZYBQawlVCNZNCf/Y1fiBOmeW/wS7UHeGSVGPjtt2d96uaX69BlIjh7cFnf8w==
+  dependencies:
+    "@pusher/chatkit-client" "^1.13.0"
+    prop-types "^15.7.2"
+    react "^16.9.0"
+
+"@pusher/chatkit-client@^1.13.0", "@pusher/chatkit-client@^1.13.4":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@pusher/chatkit-client/-/chatkit-client-1.13.4.tgz#e29d19f01df9e0dfce414611cef27988594cb8af"
+  integrity sha512-5XOm2ux6FZTHDcu6OwgiodpAMKrUR6+ErhpbaOqF/dKIC6tZeD+bskzYPJQv7ixqQHkMYbsEkMlWonB0qfsbBg==
+
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
@@ -8564,7 +8578,7 @@ react-scripts@3.3.0:
   optionalDependencies:
     fsevents "2.1.2"
 
-react@^16.12.0:
+react@^16.12.0, react@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
