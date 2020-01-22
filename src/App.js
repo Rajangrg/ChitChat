@@ -9,6 +9,14 @@ import MessageList from './components/message-list/message-list.component'
 import './App.css';
 
 class App extends React.Component {
+
+  constructor() {
+    super(); //calling the super on the react.component class
+    this.state = {
+      messages: []
+    }
+  }
+
   //api setup
   componentDidMount() {
     const chatManager = new ChatManager({
@@ -19,6 +27,7 @@ class App extends React.Component {
       })
     })
 
+    //if connection is true
     chatManager.connect()
       .then(currentUser => {
         //console.log('Successful connection', currentUser)
@@ -26,18 +35,21 @@ class App extends React.Component {
           roomId: 'alice_and_bob',
           hooks: {
             onMessage: message => {
-              console.log("received message", message.text)
+              //console.log("received message", message.text)
+              this.setState({
+                messages: [...this.state.messages, message] //set new message to old messages
+              })
             }
           }
-          })
+        })
       })
 
   }
-
   render() {
+    //console.log(this.state.messages);
     return (
       <div className="app">
-        <MessageList></MessageList>
+        <MessageList messages={this.state.messages}></MessageList>
       </div>
     )
   }
