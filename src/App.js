@@ -14,11 +14,14 @@ class App extends React.Component {
   constructor() {
     super(); //calling the super on the react.component class
     this.state = {
+      roomId: null,
       messages: [],
       joinableRooms: [],
       joinedRooms: []
     }
     this.sendMessage = this.sendMessage.bind(this)
+    this.subscribeToRoom = this.subscribeToRoom.bind(this)
+    this.getRooms = this.getRooms.bind(this)
   }
 
   //api setup
@@ -35,46 +38,62 @@ class App extends React.Component {
     chatManager.connect()
       .then(currentUser => {
         //console.log('Successful connection', currentUser)
-
         this.currentUser = currentUser // for further access
+        //calling
+        this.getRooms();
 
-        this.currentUser.getJoinableRooms()
-          .then(joinableRooms => {
-            this.setState({
-              joinableRooms, //available room
-              joinedRooms: this.currentUser.rooms //joined
-            })
-          }).catch(err => console.log('error on joinable room:', err))
-
-        this.currentUser.subscribeToRoom({
-          roomId: 'alice_and_bob',
-          hooks: {
-            onMessage: message => {
-              // console.log("received message", message)
-              this.setState({
-                messages: [...this.state.messages, message] //set new message to old messages
-              })
-            }
-          }
-        })
       }).catch(err => console.log('connection error:', err))
   }
 
-  //retrieve form input and send tthourgh api
+  //get joinable room
+  getRooms() {
+    this.currentUser.getJoinableRooms()
+      .then(joinableRooms => {
+        this.setState({
+          joinableRooms, //available room
+          joinedRooms: this.currentUser.rooms //joined
+        })
+      }).catch(err => console.log('error on joinable room:', err))
+  }
+
+  // subscribe to room
+  subscribeToRoom(roomId) {
+    this.setState({ messages: [] })
+    this.currentUser.subscribeToRoom({
+      roomId: roomId,
+      hooks: {
+        onMessage: message => {
+          // console.log("received message", message)
+          this.setState({
+            messages: [...this.state.messages, message] //set new message to old messages
+          })
+        }
+      }
+    })
+      .then(room => {
+        this.setState({
+          roomId: room.id
+        })
+        this.getRooms()
+      }).catch(err => console.log('error on subscribing to room', err))
+  }
+  //retrieve form input and send thorugh api
   sendMessage(userInputText) {
     this.currentUser.sendMessage({
       //text: text,
       text: userInputText,  // passing to api chat object text
-      roomId: 'alice_and_bob'
+      roomId: this.state.roomId
     })
   }
 
   render() {
     return (
       <div className="app">
-        <RoomList rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} />
-        <MessageList messages={[...this.state.messages]}/>
-        <SendmessageForm sendMessage={this.sendMessage}/>
+        <RoomList
+          subscribeToRoom={this.subscribeToRoom}
+          rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} />
+        <MessageList messages={[...this.state.messages]} />
+        <SendmessageForm sendMessage={this.sendMessage} />
       </div>
     )
   }

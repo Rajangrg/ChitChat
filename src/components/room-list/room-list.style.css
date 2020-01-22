@@ -6,9 +6,14 @@
 .rooms-list {
 	box-sizing: border-box;
 	padding: 10px;
-	background-color: var(--main-color);
+	background-color: #8B7AAF;
 	overflow: scroll;
 	height: 100%;
+}
+
+
+.room-link{
+	background-color: #F7F6F5;
 }
 
 .rooms-list > ul {
