@@ -1,5 +1,6 @@
 import React from 'react';
 import './message-list.style.css';
+import Message from '../message/message.component';
 
 // //Test Data
 // import DummyData from './dummydata-test'
@@ -7,24 +8,17 @@ import './message-list.style.css';
 // // Dummy data for test
 // const testData = DummyData;
 
-class MessageList extends React.Component {
-	render() {
-		return (
-			<div className='message-list'>
-					{
-					this.props.messages.map((message,index)=>{
-							return (
-								<div key={index} className="message">
-									<div className="message-username"> {message.senderId}</div>
-									<div className="message-text"> {message.text}</div>
-								</div>
-							)
-						})
-					}
-			</div>
 
-		)
-	}
-}
+const MessageList = (props) =>(
+	<div className='message-list'>
+				{
+					props.messages.map((message, index) => {
+						return (
+							<Message key={index} username={message.senderId} text={message.text}/>
+						)
+					})
+				}
+			</div>
+)
 
 export default MessageList;
