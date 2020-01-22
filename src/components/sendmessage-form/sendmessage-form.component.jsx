@@ -20,7 +20,7 @@ class SendMessageForm extends React.Component {
 	}
 
 	handleSubmit(e){
-			e.preventDefault();
+			e.preventDefault(); // dont send anythihg when load
 			//sending the message
 			this.props.sendMessage(this.state.message)
 			this.setState({
