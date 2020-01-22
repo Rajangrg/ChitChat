@@ -8,7 +8,6 @@ import Message from '../message/message.component';
 // // Dummy data for test
 // const testData = DummyData;
 
-
 const MessageList = (props) =>(
 	<div className='message-list'>
 				{

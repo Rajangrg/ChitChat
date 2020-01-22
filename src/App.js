@@ -3,8 +3,10 @@ import React from 'react';
 //3rd parties dependencies
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 import { tokenUrl, instanceLocator } from './config'
+
 //components
 import MessageList from './components/message-list/message-list.component'
+import SendmessageForm from './components/sendmessage-form/sendmessage-form.component'
 
 import './App.css';
 
@@ -50,6 +52,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <MessageList messages={this.state.messages}></MessageList>
+        <SendmessageForm></SendmessageForm>
       </div>
     )
   }
