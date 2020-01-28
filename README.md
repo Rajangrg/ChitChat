@@ -1,7 +1,8 @@
-<!--To test or run other features of the pusher ChatKit  
+To test or run other features of the pusher ChatKit  
 //create instances and replace my credential with yours.
-// Change the tokenUrl and InstanceLocator from the src/config.js -->
+// Change the tokenUrl and InstanceLocator from the src/config.js
 
+............................*******..........................................................
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
